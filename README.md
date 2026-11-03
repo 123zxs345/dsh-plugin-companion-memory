@@ -50,10 +50,17 @@ https://raw.githubusercontent.com/123zxs345/dsh-plugin-companion-memory/main/mar
 ```yaml
 - id: companion-memory
   config:
+    dataDir: !!js "ctx.get('profileContext').dir + '/companion-memory'"
+    companionId: default
+    idleReviewSeconds: 15
+    reviewMaxDelaySeconds: 60
+    candidateBudget: 24
+    minimumSimilarity: 0.55
+    contextTokens: 800
     hindsightUrl: http://127.0.0.1:8888
 ```
 
-将地址替换为你的实际服务。未配置检索服务时，本地SQLite与后台画像维护仍然保留，额外经历候选为空，不用无关内容补位。插件不会自动下载嵌入模型或另起数据库；外部服务由宿主管理。
+将地址替换为你的实际服务。profile 补丁会替换整个 `config`，请保留数据目录及已有自定义配置。未配置检索服务时，本地SQLite与后台画像维护仍然保留，额外经历候选为空，不用无关内容补位。插件不会自动下载嵌入模型或另起数据库；外部服务由宿主管理。
 
 默认用于一个主人的 profile。多用户部署请使用隔离的作用域、独立 `companionId` 和数据目录。
 
