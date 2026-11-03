@@ -1,0 +1,110 @@
+{
+  "name": "dsh-plugin-companion-memory",
+  "version": "0.3.2",
+  "description": "Model-guided selective memory for emotional companionship in DeepSeek Harness",
+  "license": "MIT",
+  "type": "module",
+  "author": {
+    "name": "123zxs345",
+    "url": "https://github.com/123zxs345"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/123zxs345/dsh-plugin-companion-memory.git"
+  },
+  "homepage": "https://github.com/123zxs345/dsh-plugin-companion-memory#readme",
+  "bugs": {
+    "url": "https://github.com/123zxs345/dsh-plugin-companion-memory/issues"
+  },
+  "icon": "./icon.svg",
+  "engines": {
+    "node": ">=24.0.0",
+    "dsh": "0.2.1-rc.2"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "main": "./lib/runtime/dsh/companion-memory-plugin.js",
+  "types": "./lib/runtime/dsh/companion-memory-plugin.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/runtime/dsh/companion-memory-plugin.d.ts",
+      "import": "./lib/runtime/dsh/companion-memory-plugin.js"
+    },
+    "./reviewer": {
+      "types": "./lib/memory/reviewer.d.ts",
+      "import": "./lib/memory/reviewer.js"
+    },
+    "./recall": {
+      "types": "./lib/memory/recall.d.ts",
+      "import": "./lib/memory/recall.js"
+    },
+    "./user-profile": {
+      "types": "./lib/memory/user-profile.d.ts",
+      "import": "./lib/memory/user-profile.js"
+    },
+    "./disclosure": {
+      "types": "./lib/memory/disclosure.d.ts",
+      "import": "./lib/memory/disclosure.js"
+    },
+    "./retrieval-policy": {
+      "types": "./lib/memory/retrieval-policy.d.ts",
+      "import": "./lib/memory/retrieval-policy.js"
+    },
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "lib",
+    "README.md",
+    "LICENSE",
+    "cordis.patch.yml",
+    "icon.svg",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "memory",
+    "companion",
+    "deepseek",
+    "user-profile",
+    "prompt-caching"
+  ],
+  "dependencies": {
+    "@deepseek-ai/schemastery": "3.18.5",
+    "@vectorize-io/hindsight-client": "1.1.0",
+    "better-sqlite3": "12.4.1"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "4.0.5",
+    "@deepseek-ai/dsh-agent": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-llm": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-session": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-tools": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-system-prompt": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-scope": "0.2.1-rc.2"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.ts",
+    "check": "npm run typecheck && npm test"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2",
+    "@types/node": "24.19.2",
+    "@types/better-sqlite3": "9.6.0",
+    "@deepseek-ai/dsh-agent-loop": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-session-projection": "0.2.1-rc.2",
+    "@deepseek-ai/cordis-plugin-loader": "1.0.6",
+    "@deepseek-ai/cordis-plugin-include": "1.0.10",
+    "js-yaml": "4.3.2",
+    "@deepseek-ai/dsh-app-boot": "0.2.1-rc.2",
+    "@types/js-yaml": "4.0.9"
+  }
+}

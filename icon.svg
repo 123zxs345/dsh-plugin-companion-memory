@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Companion memory">
+  <rect width="128" height="128" rx="30" fill="#edf2ff"/>
+  <path d="M24 85l40 21 40-21M24 68l40 21 40-21" fill="none" stroke="#8da7ef" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M24 48l40 22 40-22-40-22z" fill="#355be8"/>
+  <path d="M64 55c-5-4-14-9-14-16 0-8 10-10 14-3 4-7 14-5 14 3 0 7-9 12-14 16z" fill="#fff"/>
+</svg>

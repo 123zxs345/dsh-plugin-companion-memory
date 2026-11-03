@@ -1,0 +1,13 @@
+# Each DSH profile owns its memory directory and its host model credentials.
+- insert:
+    - id: companion-memory
+      name: dsh-plugin-companion-memory
+      disabled: !!js "!ctx.get('profileContext')"
+      config:
+        dataDir: !!js "ctx.get('profileContext').dir + '/companion-memory'"
+        companionId: default
+        idleReviewSeconds: 15
+        reviewMaxDelaySeconds: 60
+        candidateBudget: 24
+        minimumSimilarity: 0.55
+        contextTokens: 800

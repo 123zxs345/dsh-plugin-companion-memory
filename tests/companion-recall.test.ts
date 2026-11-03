@@ -1,0 +1,33 @@
+import assert from 'node:assert/strict';
+import { randomUUID } from 'node:crypto';
+import { mkdtempSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import test from 'node:test';
+import { StateStore } from '../src/state/store.ts';
+import { recallCompanionMemories, memoryContextItems } from '../src/memory/recall.ts';
+import type {MemoryMaterialIndex} from '../src/memory/material-index.ts';
+
+test('recall keeps distinctive anchors and model-authored usage guidance, including faded memories', async t=>{
+  const dir=mkdtempSync(join(tmpdir(),'companion-recall-'));const store=new StateStore(join(dir,'state.sqlite'));
+  t.after(()=>{store.close();rmSync(dir,{recursive:true,force:true});});
+  store.ensureCompanion({id:'c',name:'c',anchors:{identity:'c'}});
+  store.stageEvent({id:'s',companionId:'c',sessionId:'chat',role:'user',content:'我们把这一天叫作荷包蛋日。',occurredAt:'2020-01-01T00:00:00Z',visibility:'private',revision:1});
+  const ref=store.companionMemory.applyPlan({planId:randomUUID(),companionId:'c',expectedEpoch:store.currentEpoch('c'),reviewedSources:[{eventId:'s',sourceRevision:1}],operations:[{action:'retain',draft:{summary:'荷包蛋日的共同约定',meaning:'共同约定的名字',anchors:['荷包蛋日'],view:'shared_episode',certainty:'explicit',reason:'用户命名的共同经历',useWhen:'用户主动谈起这一天',avoidWhen:'其他无关日子',sourceRefs:[{eventId:'s',sourceRevision:1}],parentRefs:[]}}]}).memories[0]!;
+  store.companionMemory.applyPlan({planId:randomUUID(),companionId:'c',expectedEpoch:store.currentEpoch('c'),reviewedSources:[],operations:[{action:'deprioritize',target:ref}]});
+  const memory=store.companionMemory.getMemory('c',ref)!;
+  const index={recall:async()=>[{memory,similarity:.8}]} as unknown as MemoryMaterialIndex;
+  const memories=await recallCompanionMemories({store,companionId:'c',query:'那天叫什么',tokenBudget:1000,index});
+  assert.deepEqual(await recallCompanionMemories({store,companionId:'c',query:'那天叫什么',tokenBudget:1000}),[],'No semantic backend must not manufacture catalog candidates');
+  const notYetIndexed=await recallCompanionMemories({store,companionId:'c',query:'那天叫什么',tokenBudget:1000,index:{recall:async()=>[]} as unknown as MemoryMaterialIndex});
+  assert.equal(notYetIndexed.length,0,'An empty semantic result must never be filled from unindexed catalog rows');
+  assert.deepEqual(await recallCompanionMemories({store,companionId:'c',query:'那天叫什么',tokenBudget:1000,index:{recall:async()=>[{memory,similarity:.54}]} as unknown as MemoryMaterialIndex}),[]);
+  const context=memoryContextItems(memories,1000);
+  assert.equal(context.length,1);
+  assert.deepEqual(context[0]!.anchors,['荷包蛋日']);
+  assert.equal(context[0]!.status,'deprioritized');
+  assert.equal(context[0]!.reason,'用户命名的共同经历');
+  assert.equal(context[0]!.avoidWhen,'其他无关日子');
+  store.forgetEvents('c',['s'],'erase');
+  assert.deepEqual(await recallCompanionMemories({store,companionId:'c',query:'荷包蛋日',tokenBudget:1000}),[]);
+});
