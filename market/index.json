@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Companion Memory",
+    "zh": "情感陪伴记忆插件"
+  },
+  "plugins": [
+    {
+      "name": "dsh-plugin-companion-memory",
+      "title": {
+        "en": "Companion Memory",
+        "zh": "DSH 情感陪伴记忆插件"
+      },
+      "description": {
+        "en": "Model-guided selective memory, evolving user profiles, three-layer disclosure and native prefix reuse for emotional companionship.",
+        "zh": "主动维护用户画像，以用户在意的意义取舍记忆；三层渐进披露、相关才召回、复用刚结束的会话前缀与总结。"
+      },
+      "author": "123zxs345",
+      "homepage": "https://github.com/123zxs345/dsh-plugin-companion-memory#readme",
+      "repository": {
+        "url": "https://github.com/123zxs345/dsh-plugin-companion-memory"
+      },
+      "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkNvbXBhbmlvbiBtZW1vcnkiPgogIDxyZWN0IHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiByeD0iMzAiIGZpbGw9IiNlZGYyZmYiLz4KICA8cGF0aCBkPSJNMjQgODVsNDAgMjEgNDAtMjFNMjQgNjhsNDAgMjEgNDAtMjEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzhkYTdlZiIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNMjQgNDhsNDAgMjIgNDAtMjItNDAtMjJ6IiBmaWxsPSIjMzU1YmU4Ii8+CiAgPHBhdGggZD0iTTY0IDU1Yy01LTQtMTQtOS0xNC0xNiAwLTggMTAtMTAgMTQtMyA0LTcgMTQtNSAxNCAzIDAgNy05IDEyLTE0IDE2eiIgZmlsbD0iI2ZmZiIvPgo8L3N2Zz4K",
+      "metadata": {
+        "keywords": [
+          "dsh-plugin",
+          "deepseek",
+          "memory",
+          "companion",
+          "记忆",
+          "情感陪伴",
+          "用户画像",
+          "缓存复用"
+        ]
+      },
+      "versions": [
+        {
+          "version": "0.3.2",
+          "publishTimestamp": 1793717697,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/123zxs345/dsh-plugin-companion-memory",
+            "commit": "b41ee19761383766ccec4c09850944e6d98a8752"
+          },
+          "engines": {
+            "dsh": "0.2.1-rc.2"
+          }
+        }
+      ]
+    }
+  ]
+}
