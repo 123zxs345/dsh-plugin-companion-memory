@@ -1,12 +1,26 @@
 # DSH 情感陪伴记忆插件
 
-**人也记不住每次闲聊。重要的是，理解什么对这个人值得记住。**
+**遗忘本身不是问题。重要的是，从经历里提炼出这个人真正会记住的东西。**
 
-面向 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 的选择性记忆插件。模型主动维护用户画像，思考用户在意什么、哪些片段会被用户自己记住、哪些经历承载情感联系，再决定记忆的保留、提炼、合并与修正。
+面向 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 的选择性记忆插件，项目名 `dsh-plugin-companion-memory`。
 
-同样是一碗面，普通外卖可能只是当天的细节，家人特意留的面却可能承载被惦记的感受。重要性来自这个人与这段经历的意义，不按内容类型、关键词、情绪分数或固定遗忘天数筛选。
+## 为什么做这个插件
 
-**Companion Memory for DeepSeek Harness:** model-guided selective memory, an evolving user profile, three-layer progressive disclosure, and native conversation-prefix reuse for emotional companionship.
+记忆插件有个两难：忘得太多，会丢掉用户认真说过、希望被记住的细节；可把每次闲聊都带进下一轮对话，上下文迟早装不下。压缩、检索、分层让记忆更容易存下和找回。对情感陪伴，我们还想追问一句：存下来的，真的是这个人在意的吗？
+
+后来我们想，人不也会忘吗？你未必记得上周每顿饭吃了什么，却可能一直记得那晚加班回家，家人给你留了一碗面。值得留下的，可能是被惦记的感受，以及这段经历对你的意义。
+
+所以，我们把问题从“怎样少忘一点”推进到“怎样提炼重要信息”：让模型在相处中主动学习、持续修正用户画像，理解你看重什么、希望怎样被对待、哪些经历会被你自己记住。再结合这份理解，判断记忆的保留、提炼、合并与修正。重要性由模型结合这个人与当时的情境判断，用户当下的表达优先。
+
+这就是 DSH 情感陪伴记忆插件（dsh-plugin-companion-memory）的出发点。原始记忆保留原话与来源，提炼记忆留下意义和适用情境，简短总结用于检索；相关性达标才进入候选，最多24条，由模型按需展开更深的内容。
+
+陪伴也需要负担得起。插件复用刚结束的原生会话前缀、已有总结和阶段结果，减少重复整理的开销，让新的经历继续修正对你的理解。
+
+我们希望让大肥鱼记住你在意的事，让下一次聊天能接着上一次的相处。这里不按内容类型、关键词、情绪分数或固定遗忘天数筛选记忆；取舍由模型结合画像和经历的意义判断。
+
+[观看介绍视频](https://www.bilibili.com/video/BV1G1436xEp4/) · [GitHub 源码与下载](https://github.com/123zxs345/dsh-plugin-companion-memory) · 喜欢这个想法，欢迎点颗 Star。
+
+**Companion Memory for DeepSeek Harness:** understand the person, distill what matters, and keep the relationship continuous through an evolving user profile, selective layered memory and native conversation-prefix reuse.
 
 ## 设计
 

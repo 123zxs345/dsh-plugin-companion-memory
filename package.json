@@ -1,7 +1,7 @@
 {
   "name": "dsh-plugin-companion-memory",
   "version": "0.3.2",
-  "description": "Model-guided selective memory for emotional companionship in DeepSeek Harness",
+  "description": "Selective companion memory for DeepSeek Harness: learn the user and distill what matters, with layered recall and prefix/summary reuse",
   "license": "MIT",
   "type": "module",
   "author": {

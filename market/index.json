@@ -12,8 +12,8 @@
         "zh": "DSH 情感陪伴记忆插件"
       },
       "description": {
-        "en": "Model-guided selective memory, evolving user profiles, three-layer disclosure and native prefix reuse for emotional companionship.",
-        "zh": "主动维护用户画像，以用户在意的意义取舍记忆；三层渐进披露、相关才召回、复用刚结束的会话前缀与总结。"
+        "zh": "人也记不住每次闲聊。主动学习用户画像，提炼用户在意、会自己记住的经历；支持三层渐进披露、相关才召回、会话前缀与总结复用。",
+        "en": "People forget everyday details. Learn an evolving user profile and distill experiences that matter, with selective recall, three-layer disclosure and conversation-prefix/summary reuse."
       },
       "author": "123zxs345",
       "homepage": "https://github.com/123zxs345/dsh-plugin-companion-memory#readme",
