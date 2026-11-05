@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-companion-memory",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Selective companion memory for DeepSeek Harness: learn the user and distill what matters, with layered recall and prefix/summary reuse",
   "license": "MIT",
   "type": "module",
@@ -106,5 +106,9 @@
     "js-yaml": "4.3.2",
     "@deepseek-ai/dsh-app-boot": "0.2.1-rc.2",
     "@types/js-yaml": "4.0.9"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

@@ -39,7 +39,21 @@
 
 已验证环境：**Node.js 24+、DeepSeek Harness 0.2.1-rc.2、Cordis 4.0.5**。先在宿主中配置好模型与凭据，插件复用宿主，不需要再填写模型 API Key。
 
-在常用的 `web` profile 中安装发布包：
+### npm 安装（推荐）
+
+在常用的 `web` profile 中执行：
+
+```sh
+dsh plugin --profile web add dsh-plugin-companion-memory
+```
+
+首次 npm 发行版为 **0.3.3**。安装后重启 `dsh web`。也可以在支持 npm 插件的市场中搜索 `dsh-plugin-companion-memory`；各市场的收录由其维护者和同步流程决定。
+
+[npm 包与版本](https://www.npmjs.com/package/dsh-plugin-companion-memory) · [GitHub 源码](https://github.com/123zxs345/dsh-plugin-companion-memory)
+
+### GitHub 安装（0.3.2）
+
+原有 GitHub Release 和固定 Git 版本仍可使用：
 
 ```sh
 dsh plugin --profile web add https://github.com/123zxs345/dsh-plugin-companion-memory/releases/download/v0.3.2/dsh-plugin-companion-memory-0.3.2.tgz
